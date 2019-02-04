@@ -1,8 +1,8 @@
-package academits.mainShapes.shapes.classes;
+package ru.academits.mainShapes.shapes.classes;
 
 import java.lang.RuntimeException;
 
-public class Triangle implements academits.mainShapes.shapes.classes.Shape {
+public class Triangle implements Shape {
     private double x1;
     private double y1;
     private double x2;
