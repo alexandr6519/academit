@@ -1,6 +1,6 @@
-package ru.academits.mainShapes;
+package academit.shapes;
 
-import ru.academits.mainShapes.shapes.classes.*;
+import academit.shapes.classes.*;
 
 import java.util.Comparator;
 import java.util.Arrays;
