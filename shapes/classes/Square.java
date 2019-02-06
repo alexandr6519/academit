@@ -1,4 +1,4 @@
-package ru.academits.mainShapes.shapes.classes;
+package academit.shapes.classes;
 
 import java.lang.RuntimeException;
 
