@@ -1,14 +1,14 @@
-package ru.academits.ru.academits.range;
+package academit;
 
 import java.util.Locale;
 import java.util.Scanner;
 import java.lang.NullPointerException;
 
-public class Range {
+public class R {
     private double pointStart;
     private double pointEnd;
 
-    private Range(double pointStart, double pointEnd) {
+    private R(double pointStart, double pointEnd) {
         if (pointStart > pointEnd) {
             System.out.println("Значение конечной точки не должно быть меньше значения начальной!!!");
         } else {
@@ -33,7 +33,7 @@ public class Range {
         this.pointEnd = pointEnd;
     }
 
-    private static double getDistance(Range range) {
+    private static double getDistance(R range) {
         if (range == null) {
             throw new NullPointerException();
         }
@@ -42,7 +42,7 @@ public class Range {
         return difference;
     }
 
-    private static void isInside(double pointChecked, Range range) {
+    private static void isInside(double pointChecked, R range) {
         if (range == null) {
             throw new NullPointerException();
         }
@@ -59,8 +59,8 @@ public class Range {
         }
     }
 
-    private static Range getIntersectionRanges(Range range1, Range range2) {
-        Range range3 = new Range(0, 0);
+    private static R getIntersectionRanges(Range range1, Range range2) {
+        R range3 = new R(0, 0);
         try {
             if (range1.pointEnd == range2.pointStart || range1.pointStart == range2.pointEnd) {
                 range3.pointStart = Math.max(range1.pointStart, range2.pointStart);
@@ -88,10 +88,10 @@ public class Range {
         return range3;
     }
 
-    private static Range[] getUnionRanges(Range range1, Range range2) {
-        Range r1 = new Range(0, 0);
-        Range r2 = new Range(0, 0);
-        Range range[] = {r1, r2};
+    private static R[] getUnionRanges(R range1, R range2) {
+        R r1 = new R(0, 0);
+        R r2 = new R(0, 0);
+        R range[] = {r1, r2};
         try {
             if (range1.pointEnd == range2.pointStart || range1.pointStart == range2.pointEnd) {
                 range[0].pointStart = (range1.pointStart > range2.pointStart) ? range2.pointStart : range1.pointStart;   //Math.min(range1.pointStart, range2.pointStart);
@@ -123,10 +123,10 @@ public class Range {
         }
     }
 
-    private static Range[] getDifferenceRanges(Range range1, Range range2) {
-        Range r1 = new Range(0, 0);
-        Range r2 = new Range(0, 0);
-        Range range[] = {r1, r2};
+    private static R[] getDifferenceRanges(R range1, R range2) {
+        R r1 = new R(0, 0);
+        R r2 = new R(0, 0);
+        R range[] = {r1, r2};
         try {
             if (range1.pointEnd == range2.pointStart) {
                 range[0].pointStart = range1.pointStart;
@@ -186,7 +186,7 @@ public class Range {
         Scanner scanner = new Scanner(System.in);
         scanner.useLocale(Locale.US);
 
-        Range range1 = new Range(0.0, 0.0);
+        R range1 = new R(0.0, 0.0);
 
         do {
             System.out.println("Введите значение начальной точки первого отрезка: ");
@@ -206,7 +206,7 @@ public class Range {
 
         isInside(pointChecked, range1);
 
-        Range range2 = new Range(0.0, 0.0);
+        R range2 = new R(0.0, 0.0);
         do {
             System.out.println("Введите значение начальной точки второго отрезка: ");
             range2.setPointStart(scanner.nextDouble());
@@ -233,9 +233,9 @@ public class Range {
 
         System.out.println("   Получение пересечения, объединения и разности двух отрезков.");
 
-        Range r = getIntersectionRanges(range1, range2);
-        Range[] r1 = getUnionRanges(range1, range2);
-        Range[] r2 = getDifferenceRanges(range1, range2);
+        R r = getIntersectionRanges(range1, range2);
+        R[] r1 = getUnionRanges(range1, range2);
+        R[] r2 = getDifferenceRanges(range1, range2);
     }
 }
 
